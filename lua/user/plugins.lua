@@ -83,6 +83,7 @@ return packer.startup(function(use)
 
   -- Debug
   use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
