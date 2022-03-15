@@ -5,7 +5,7 @@ end
 
 local setup = {
   plugins = {
-    marks = true, -- shows a list of your marks on ' and `
+    marks = false, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
     spelling = {
       enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
@@ -15,17 +15,17 @@ local setup = {
     -- No actual key bindings are created
     presets = {
       operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
-      motions = true, -- adds help for motions
-      text_objects = true, -- help for text objects triggered after entering an operator
+      motions = false, -- adds help for motions
+      text_objects = false, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
-      nav = true, -- misc bindings to work with windows
+      nav = false, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
-      g = true, -- bindings for prefixed with g
+      g = false, -- bindings for prefixed with g
     },
   },
   -- add operators that will trigger motion and text object completion
   -- to enable all native operators, set the preset / operators plugin above
-  -- operators = { gc = "Comments" },
+  operators = { gc = "Comments" },
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
@@ -51,7 +51,7 @@ local setup = {
   },
   layout = {
     height = { min = 4, max = 25 }, -- min and max height of the columns
-    width = { min = 20, max = 50 }, -- min and max width of the columns
+    width = { min = 30, max = 50 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
     align = "left", -- align columns left, center or right
   },
@@ -84,10 +84,19 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+  ["d"] = {
+    name = "Debug",
+    a = {"<cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear All Breakpoints"},
+    b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint"},
+    c = {"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Breakpoint Condition"},
+    l = {"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "Logpoint"},
+    r = {"<cmd>lua require'dap'.repl.toggle()<CR>", "Toggle Repl"},
+    d = {"<cmd>lua require'dap'.disconnect()<CR>", "Disconnect"}
+  },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+  ["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",

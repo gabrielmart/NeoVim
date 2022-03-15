@@ -1,3 +1,4 @@
+local dap = require('dap')
 local opts = { noremap = true, silent = true }
 
 -- Shorten function name
@@ -12,4 +13,5 @@ keymap("n", "<F6>", ":lua require'dap'.step_over()<CR>", opts)
 keymap("n", "<F7>", ":lua require'dap'.step_into()<CR>", opts)
 keymap("n", "<F8>", ":lua require'dap'.step_out()<CR>", opts)
 keymap("n", "<F9>", ":lua require'dap'.repl.toggle()<CR>", opts)
-keymap("n", "<F10>", ":lua require'dap'.disconnect()<CR>", opts)
+keymap("n", "<F10>", ":lua require'dapui'.eval()<CR>", opts)
+keymap("n", "<F11>", ":lua require'dap'.disconnect()<CR>", opts)
