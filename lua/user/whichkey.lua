@@ -140,34 +140,25 @@ local mappings = {
   l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
-      "Document Diagnostics",
-    },
-    w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-      "Workspace Diagnostics",
-    },
-    f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+    f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open Float" },
+    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+    D = { "<cmd>Trouble lsp_definitions", "Go Definitions" },
+    F = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+    d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
+    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
+    R = { "<cmd>Trouble lsp_references<cr>", "References" },
+    q = { "<cmd>Trouble loclist<cr>", "Quickfix" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
+    j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Next Diagnostic" },
+    k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
+
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-      "Next Diagnostic",
-    },
-    k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-      "Prev Diagnostic",
-    },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = {
-      "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-      "Workspace Symbols",
-    },
   },
+
   s = {
     name = "Search",
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },

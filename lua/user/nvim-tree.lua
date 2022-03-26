@@ -53,10 +53,10 @@ nvim_tree.setup {
   diagnostics = {
     enable = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = "❗",
+      info = "ℹ️",
+      warning = "⚠️",
+      error = "❌",
     },
   },
   update_focused_file = {
@@ -74,7 +74,7 @@ nvim_tree.setup {
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     timeout = 500,
   },
   view = {

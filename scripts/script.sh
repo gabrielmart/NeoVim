@@ -15,6 +15,8 @@ function clone_dap ()
   npm run build
 }
 
+cd ~/.config/nvim/
+
 if [[ -d ./config-debug/ ]]; then
   cd /config-debug/
 
