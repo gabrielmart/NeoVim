@@ -84,15 +84,15 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
-  ["d"] = {
-    name = "Debug",
-    a = {"<cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear All Breakpoints"},
-    b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint"},
-    c = {"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Breakpoint Condition"},
-    l = {"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "Logpoint"},
-    r = {"<cmd>lua require'dap'.repl.toggle()<CR>", "Toggle Repl"},
-    d = {"<cmd>lua require'dap'.disconnect()<CR>", "Disconnect"}
-  },
+  -- ["d"] = {
+  --   name = "Debug",
+  --   a = {"<cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear All Breakpoints"},
+  --   b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint"},
+  --   c = {"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Breakpoint Condition"},
+  --   l = {"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "Logpoint"},
+  --   r = {"<cmd>lua require'dap'.repl.toggle()<CR>", "Toggle Repl"},
+  --   d = {"<cmd>lua require'dap'.disconnect()<CR>", "Disconnect"}
+  -- },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
@@ -144,7 +144,7 @@ local mappings = {
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open Float" },
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-    D = { "<cmd>Trouble lsp_definitions", "Go Definitions" },
+    D = { "<cmd>Trouble lsp_definitions<cr>", "Go Definitions" },
     F = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
     d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
     w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
@@ -181,6 +181,23 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+    d = {
+      name = "Vimspector",
+      G = { "<cmd>lua require('user.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
+      I = { "<cmd>VimspectorInstall<cr>", "Install" },
+      U = { "<cmd>VimspectorUpdate<cr>", "Update" },
+      R = { "<cmd>call vimspector#RunToCursor()<cr>", "Run to Cursor" },
+      c = { "<cmd>call vimspector#Continue()<cr>", "Continue" },
+      i = { "<cmd>call vimspector#StepInto()<cr>", "Step Into" },
+      o = { "<cmd>call vimspector#StepOver()<cr>", "Step Over" },
+      s = { "<cmd>call vimspector#Launch()<cr>", "Start" },
+      t = { "<cmd>call vimspector#ToggleBreakpoint()<cr>", "Toggle Breakpoint" },
+      u = { "<cmd>call vimspector#StepOut()<cr>", "Step Out" },
+      S = { "<cmd>call vimspector#Stop()<cr>", "Stop" },
+      r = { "<cmd>call vimspector#Restart()<cr>", "Restart" },
+      x = { "<cmd>VimspectorReset<cr>", "Reset" },
+      H = { "<cmd>lua require('user.vimspector').toggle_human_mode()<cr>", "Toggle HUMAN mode" },
+    },
 }
 
 which_key.setup(setup)

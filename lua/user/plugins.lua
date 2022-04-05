@@ -85,7 +85,14 @@ return packer.startup(function(use)
   -- Debug
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-
+  use {
+    "puremourning/vimspector",
+    cmd = { "VimspectorInstall", "VimspectorUpdate" },
+    fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
+    config = function()
+      require("user.vimspector").setup()
+    end,
+   }
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
