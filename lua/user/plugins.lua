@@ -1,6 +1,8 @@
 local fn = vim.fn
+
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     "git",
@@ -39,6 +41,7 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
+
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
@@ -85,14 +88,8 @@ return packer.startup(function(use)
   -- Debug
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-  use {
-    "puremourning/vimspector",
-    cmd = { "VimspectorInstall", "VimspectorUpdate" },
-    fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
-    config = function()
-      require("user.vimspector").setup()
-    end,
-   }
+  use {'Pocco81/DAPInstall.nvim'}
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
