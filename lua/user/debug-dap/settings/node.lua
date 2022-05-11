@@ -12,7 +12,7 @@ dap.configurations.javascript = {
     program = '${file}',
     cwd = vim.fn.getcwd(),
     sourceMaps = true,
-    protocol = 'inspector',
+    protocol = 'legacy',
     console = 'integratedTerminal',
   },
   {
