@@ -49,12 +49,18 @@ return packer.startup(function(use)
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff
   use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  use "akinsho/bufferline.nvim"
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+     'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+     tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
   use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use 'arkav/lualine-lsp-progress'
-  use "akinsho/toggleterm.nvim"
+  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function() require("toggleterm").setup() end}
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
   use "lukas-reineke/indent-blankline.nvim"
@@ -95,9 +101,9 @@ return packer.startup(function(use)
 
   -- Treesitter
   use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  }
+   "nvim-treesitter/nvim-treesitter",
+  run = ":TSUpdate",
+}
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
