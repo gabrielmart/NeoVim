@@ -1,4 +1,3 @@
-local dap = require('dap')
 local opts = { noremap = true, silent = true }
 
 -- Shorten function name
