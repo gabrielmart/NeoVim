@@ -3,7 +3,7 @@ local dap = require 'dap'
 dap.adapters.chrome = {
     type = "executable",
     command = "node",
-    args = {os.getenv("HOME") .. "/.config/nvim/config-debug/microsoft/vscode-chrome-debug/out/src/chromeDebug.js"} -- TODO adjust
+    args = {"C:\\Users\\gabri\\AppData\\Local\\nvim\\config-debug\\microsoft\\vscode-chrome-debug\\out\\src\\chromeDebug.js"} -- TODO adjust
 }
 
 dap.configurations.javascriptreact = { -- change this to javascript if needed
