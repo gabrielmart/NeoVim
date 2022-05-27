@@ -84,7 +84,7 @@ bufferline.setup {
     buffer_selected = {
       guifg = {attribute='fg',highlight='#ff0000'},
       guibg = {attribute='bg',highlight='#0000ff'},
-      gui = 'none'
+      gui = 'bold'
       },
     buffer_visible = {
       guifg = { attribute = "fg", highlight = "TabLine" },

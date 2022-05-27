@@ -43,34 +43,50 @@ packer.init {
 return packer.startup(function(use)
 
   -- My plugins here
+
+  -- Dependencies
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used any lots of plugins
+
+  -- Startup Time
+  use "lewis6991/impatient.nvim" -- Speed up loading Lua modules in Neovim to improve startup time.
+
+  -- Utils
+  use "moll/vim-bbye" -- Allows you to do delete buffers (close files) without closing your windows or messing up your layout.
+  use "tpope/vim-surround" -- Provides mappings to easily delete, change and add such surroundings in pairs
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use "lukas-reineke/indent-blankline.nvim"  -- Adds indentation guides to all lines (including empty lines).
   use "numToStr/Comment.nvim" -- Easily comment stuff
-  use "kyazdani42/nvim-web-devicons"
-  use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-     'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-     tag = 'nightly' -- optional, updated every week. (see issue #1193)
-  }
-  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
-  use "moll/vim-bbye"
-  use "nvim-lualine/lualine.nvim"
-  use 'arkav/lualine-lsp-progress'
-  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function() require("toggleterm").setup() end}
-  use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
-  use "lukas-reineke/indent-blankline.nvim"
+  use "norcalli/nvim-colorizer.lua" -- A high-performance color highlighter for Neovim
+
+  -- File Explorer
+  use { 'kyazdani42/nvim-tree.lua', tag = 'nightly' } -- optional, updated every week. (see issue #1193)
   use "goolord/alpha-nvim"
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "folke/which-key.nvim"
-  use "norcalli/nvim-colorizer.lua"
+  use "ahmedkhalf/project.nvim"
+
+  -- Which Key
+  use "folke/which-key.nvim" -- That displays a popup with possible key bindings of the command you started typing.
 
   -- Coloscheme
   use 'folke/tokyonight.nvim'             -- Terminal Colors
+  use "kyazdani42/nvim-web-devicons"
+  use { 'akinsho/bufferline.nvim', tag = "v2.*" }
+  use "nvim-lualine/lualine.nvim"
+  use 'arkav/lualine-lsp-progress'
+
+  -- Treesitter
+  use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+  use "JoosepAlviste/nvim-ts-context-commentstring"
+
+  -- LSP
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
+  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "folke/trouble.nvim"
+  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -84,30 +100,19 @@ return packer.startup(function(use)
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "folke/trouble.nvim"
-
   -- Debug
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
   use {'Pocco81/DAPInstall.nvim'}
 
+  -- Git
+  use "lewis6991/gitsigns.nvim"
+
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
-  -- Treesitter
-  use {
-   "nvim-treesitter/nvim-treesitter",
-  run = ":TSUpdate",
-}
-  use "JoosepAlviste/nvim-ts-context-commentstring"
-
-  -- Git
-  use "lewis6991/gitsigns.nvim"
+  -- Terminal
+  use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function() require("toggleterm").setup() end}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

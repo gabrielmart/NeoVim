@@ -34,7 +34,7 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 -- Auto close
-vim.cmd [[ autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif ]]
+-- vim.cmd [[ autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif ]]
 
 nvim_tree.setup {
   disable_netrw = true,
