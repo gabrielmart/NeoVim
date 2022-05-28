@@ -154,9 +154,14 @@ local mappings = {
     S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
     j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
     k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
+    t = {
+      name = "Typescript Utils LSP",
+      i = { "<cmd>TSLspImportAll<cr>", "Import All Missing (TS)"},
+      r = { "<cmd>TSLspRenameFile<cr>", "Rename File (TS)"},
+      o = { "<cmd>TSLspOrganize<cr>", "Organize Imports (TS)"},
+    }
   },
 
   s = {

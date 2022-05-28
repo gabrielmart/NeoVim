@@ -13,15 +13,19 @@ lsp_installer.setup {
 
 for _, server in pairs(servers) do
   local on_attach
+  local init_options
+
   on_attach = require("user.lsp.handlers").on_attach
 
   if server == "tsserver" then
+    init_options = require("nvim-lsp-ts-utils").init_options
     on_attach = require("user.lsp.settings.tsserver").on_attach
   else
     on_attach = require("user.lsp.handlers").on_attach
   end
 
   local opts = {
+    init_options = init_options,
     on_attach = on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
   }
