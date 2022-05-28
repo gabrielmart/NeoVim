@@ -13,8 +13,8 @@ local code_actions = null_ls.builtins.code_actions
 null_ls.setup({
   debug = false,
   sources = {
-    diagnostics.eslint, -- eslint or eslint_d
-    code_actions.eslint, -- eslint or eslint_d
+    diagnostics.eslint_d, -- eslint or eslint_d
+    code_actions.eslint_d, -- eslint or eslint_d
     formatting.prettier, -- prettier, eslint, eslint_d, or prettierd
   },
 })
