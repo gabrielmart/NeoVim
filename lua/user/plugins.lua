@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "tpope/vim-surround" -- Provides mappings to easily delete, change and add such surroundings in pairs
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "lukas-reineke/indent-blankline.nvim" -- Adds indentation guides to all lines (including empty lines).
+  use "NMAC427/guess-indent.nvim" -- The goal of this plugin is to automatically detect the indentation style used in a buffer.
   use "numToStr/Comment.nvim" -- Easily comment stuff
   use "norcalli/nvim-colorizer.lua" -- A high-performance color highlighter for Neovim
 

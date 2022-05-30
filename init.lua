@@ -6,9 +6,10 @@ require "user.autocommands"
 require "user.impatient"
 
 require "user.autopairs"
+require "user.indentline"
+require "user.guessIndent"
 require "user.comment"
 require "user.colorizer"
-require "user.indentline"
 
 require "user.nvim-tree"
 require "user.project"
