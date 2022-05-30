@@ -28,6 +28,7 @@ require "user.trouble"
 require "user.cmp"
 
 require "user.debug-dap"
+require "user.debug-dap.dap-virtual-text"
 
 require "user.gitsigns"
 

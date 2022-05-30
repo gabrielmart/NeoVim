@@ -84,15 +84,16 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
- ["d"] = {
-   name = "Debug",
-   a = {"<cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear All Breakpoints"},
-   b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint"},
-   c = {"<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Breakpoint Condition"},
-   l = {"<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "Logpoint"},
-   r = {"<cmd>lua require'dap'.repl.toggle()<CR>", "Toggle Repl"},
-   d = {"<cmd>lua require'dap'.disconnect()<CR>", "Disconnect"}
- },
+  ["d"] = {
+    name = "Debug",
+    a = { "<cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear All Breakpoints" },
+    b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint" },
+    c = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Breakpoint Condition" },
+    l = { "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "Logpoint" },
+    r = { "<cmd>lua require'dap'.repl.toggle()<CR>", "Toggle Repl" },
+    d = { "<cmd>lua require'dap'.disconnect()<CR>", "Disconnect" },
+    v = { "<cmd>DapVirtualTextToggle<cr>", "Toogle Virtual Text"}
+  },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
@@ -158,9 +159,9 @@ local mappings = {
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     t = {
       name = "Typescript Utils LSP",
-      i = { "<cmd>TSLspImportAll<cr>", "Import All Missing (TS)"},
-      r = { "<cmd>TSLspRenameFile<cr>", "Rename File (TS)"},
-      o = { "<cmd>TSLspOrganize<cr>", "Organize Imports (TS)"},
+      i = { "<cmd>TSLspImportAll<cr>", "Import All Missing (TS)" },
+      r = { "<cmd>TSLspRenameFile<cr>", "Rename File (TS)" },
+      o = { "<cmd>TSLspOrganize<cr>", "Organize Imports (TS)" },
     }
   },
 

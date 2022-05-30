@@ -96,6 +96,8 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
+  use "rcarriga/cmp-dap" -- source for nvim-dap REPL and nvim-dap-ui buffers
+
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -104,7 +106,8 @@ return packer.startup(function(use)
   -- Debug
   use 'mfussenegger/nvim-dap'
   use 'rcarriga/nvim-dap-ui'
-  use { 'Pocco81/DAPInstall.nvim' }
+  use 'Pocco81/DAPInstall.nvim'
+  use 'theHamsta/nvim-dap-virtual-text'
 
   -- Git
   use "lewis6991/gitsigns.nvim"

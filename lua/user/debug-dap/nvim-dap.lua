@@ -1,3 +1,9 @@
+require "dap"
+vim.fn.sign_define('DapBreakpoint', {text='', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text='', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapLogPoint', {text='ﯽ', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='', texthl='', linehl='', numhl=''})
+
 local opts = { noremap = true, silent = true }
 
 -- Shorten function name
