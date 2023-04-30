@@ -1,38 +1,30 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.autocommands"
+require "user.config.autocommands"
+require "user.config.options"
+require "user.config.keymaps"
 
-require "user.impatient"
+require "user.plugins.plugins"
 
-require "user.autopairs"
-require "user.indentline"
-require "user.guessIndent"
-require "user.comment"
-require "user.colorizer"
+require "user.plugins.impatient"
 
-require "user.nvim-tree"
-require "user.project"
-require "user.alpha"
+require "user.plugins.colorscheme"
 
-require "user.whichkey"
+require "user.plugins.alpha"
 
-require "user.colorscheme"
-require "user.bufferline"
-require "user.lualine"
+require "user.plugins.bufferline"
+require "user.plugins.scope"
+require "user.plugins.lualine"
 
-require "user.treesitter"
+require "user.plugins.neo-tree"
+require "user.plugins.project"
 
-require "user.lsp"
-require "user.trouble"
+require "user.plugins.telescope"
 
-require "user.cmp"
+require "user.plugins.indent-blankline"
 
-require "user.debug-dap"
-require "user.debug-dap.dap-virtual-text"
+require "user.plugins.treesitter"
 
-require "user.gitsigns"
+require "user.plugins.gitsigns"
 
-require "user.telescope"
-require "user.toggleterm"
+require "user.plugins.toggleterm"
 
+require "user.plugins.whichkey"

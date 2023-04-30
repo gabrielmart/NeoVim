@@ -17,25 +17,39 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- Navegate in lines wrapping
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- Navegate in lines wrapping
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
+-- Move window navigation
+keymap("n", "<C-A-Left>", "<C-w>H", opts)
+keymap("n", "<C-A-Down>", "<C-w>J", opts)
+keymap("n", "<C-A-Up>", "<C-w>K", opts)
+keymap("n", "<C-A-Right>", "<C-w>L", opts)
 
--- Resize with arrows
+-- Resize window with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-k>", ":bnext<CR>", opts)
+keymap("n", "<S-j>", ":bprevious<CR>", opts)
+
+-- Move buffer
+keymap("n", "<S-l>", ":BufferLineMoveNext<CR>", opts)
+keymap("n", "<S-h>", ":BufferLineMovePrev<CR>", opts)
+
+-- Navigate tabs
+keymap("n", "<C-A-l>", ":tabnext<CR>", opts)
+keymap("n", "<C-A-h>", ":tabprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-S-j>", "<Esc>:m .+1<CR>==", opts)

@@ -5,4 +5,4 @@ vim.g.tokyonight_transparent_sidebar = true
 vim.g.tokyonight_colors = {
     border = "#545C7E",
 }
-vim.cmd[[colorscheme tokyonight]]
+vim.cmd[[colorscheme tokyonight-night]]

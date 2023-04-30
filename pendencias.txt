@@ -1,0 +1,2 @@
+# Neotree
+- Verificar como adicionar document-symbols ao source (Verificar isso após o LSP estar configurado)

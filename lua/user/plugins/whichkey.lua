@@ -17,7 +17,7 @@ local setup = {
       operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = false, -- adds help for motions
       text_objects = false, -- help for text objects triggered after entering an operator
-      windows = true, -- default bindings on <c-w>
+      windows = false, -- default bindings on <c-w>
       nav = false, -- misc bindings to work with windows
       z = true, -- bindings for folds, spelling and others prefixed with z
       g = false, -- bindings for prefixed with g
@@ -79,28 +79,18 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
   ["b"] = {
-    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = true})<cr>",
     "Buffers",
   },
-  ["d"] = {
-    name = "Debug",
-    a = { "<cmd>lua require'dap'.clear_breakpoints()<CR>", "Clear All Breakpoints" },
-    b = { "<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Breakpoint" },
-    c = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "Breakpoint Condition" },
-    l = { "<cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "Logpoint" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<CR>", "Toggle Repl" },
-    d = { "<cmd>lua require'dap'.disconnect()<CR>", "Disconnect" },
-    v = { "<cmd>DapVirtualTextToggle<cr>", "Toogle Virtual Text"}
-  },
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["e"] = { "<cmd>Neotree toggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   ["x"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
+  ["r"] = { ":luafile %<CR>", "Reload Neovim" },
   ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+    "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = true})<cr>",
     "Find files",
   },
   ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
@@ -138,36 +128,8 @@ local mappings = {
     },
   },
 
-  l = {
-    name = "LSP",
-    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    f = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Open Float" },
-    h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-    D = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go Definitions" },
-    F = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-    d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics" },
-    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
-    R = { "<cmd>Trouble lsp_references<cr>", "References" },
-    q = { "<cmd>Trouble loclist<cr>", "Quickfix" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" },
-    j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic" },
-    k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic" },
-    i = { "<cmd>LspInfo<cr>", "Info" },
-    I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
-    t = {
-      name = "Typescript Utils LSP",
-      i = { "<cmd>TSLspImportAll<cr>", "Import All Missing (TS)" },
-      r = { "<cmd>TSLspRenameFile<cr>", "Rename File (TS)" },
-      o = { "<cmd>TSLspOrganize<cr>", "Organize Imports (TS)" },
-    }
-  },
-
   s = {
     name = "Search",
-    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
@@ -177,16 +139,7 @@ local mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
-  t = {
-    name = "Terminal",
-    n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-    u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-  },
+  ["t"] = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Terminal" },
 }
 
 which_key.setup(setup)
