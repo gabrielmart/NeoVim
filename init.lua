@@ -12,7 +12,7 @@ require "user.plugins.colorscheme"
 
 require "user.plugins.alpha"
 
--- require "user.plugins.bufferline"
+require "user.plugins.bufferline"
 require "user.plugins.scope"
 require "user.plugins.lualine"
 
