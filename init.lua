@@ -1,8 +1,10 @@
+
 require "user.config.autocommands"
 require "user.config.options"
 require "user.config.keymaps"
 
 require "user.plugins.plugins"
+require "user.plugins.cmp"
 
 require "user.plugins.impatient"
 
@@ -10,7 +12,7 @@ require "user.plugins.colorscheme"
 
 require "user.plugins.alpha"
 
-require "user.plugins.bufferline"
+-- require "user.plugins.bufferline"
 require "user.plugins.scope"
 require "user.plugins.lualine"
 
