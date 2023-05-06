@@ -1,10 +1,7 @@
-
 require "user.config.autocommands"
 require "user.config.options"
 require "user.config.keymaps"
-
 require "user.plugins.plugins"
-require "user.plugins.cmp"
 
 require "user.plugins.impatient"
 
@@ -24,6 +21,14 @@ require "user.plugins.telescope"
 require "user.plugins.indent-blankline"
 
 require "user.plugins.treesitter"
+
+require "user.plugins.cmp"
+require "user.lsp.mason"
+require "user.lsp.lspsaga"
+
+require "user.lsp.null-ls"
+
+require "user.plugins.trouble"
 
 require "user.plugins.gitsigns"
 

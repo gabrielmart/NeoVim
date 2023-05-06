@@ -37,6 +37,9 @@ local options = {
   autoread = true,
 }
 
+vim.g.backspace = [[indent,eol,start]]
+vim.g.editorconfig = true                      -- enable editorconfig in neovim
+
 vim.opt.shortmess:append "c"
 
 for k, v in pairs(options) do

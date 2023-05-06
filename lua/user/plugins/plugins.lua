@@ -1,110 +1,136 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    PACKER_BOOTSTRAP = fn.system {"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
-                                  install_path}
-    print "Installing packer close and reopen Neovim..."
-    vim.cmd [[packadd packer.nvim]]
+	PACKER_BOOTSTRAP =
+		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+	print("Installing packer close and reopen Neovim...")
+	vim.cmd([[packadd packer.nvim]])
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
+vim.cmd([[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
-]]
+]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-    return
+	return
 end
 
 -- Install your plugins here
-return packer.startup({function(use)
+return packer.startup({
+	function(use)
+		-- My plugins here
 
-    -- My plugins here
+		-- Dependencies
+		use("wbthomason/packer.nvim") -- Have packer manage itself
 
-    -- Dependencies
-    use "wbthomason/packer.nvim" -- Have packer manage itself
+		-- Startup Time
+		use("lewis6991/impatient.nvim") -- Speed up loading Lua modules in Neovim to improve startup time.
 
-    -- Startup Time
-    use "lewis6991/impatient.nvim" -- Speed up loading Lua modules in Neovim to improve startup time.
+		use("goolord/alpha-nvim")
 
-    use "goolord/alpha-nvim"
+		-- Utils
+		use("moll/vim-bbye") -- Allows you to do delete buffers (close files) without closing your windows or messing up your layout.
+		use({
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup({})
+			end,
+		})
 
-    -- Utils
-    use "moll/vim-bbye" -- Allows you to do delete buffers (close files) without closing your windows or messing up your layout.
+		-- Coloscheme
+		use("folke/tokyonight.nvim") -- Terminal Colors
+		use("kyazdani42/nvim-web-devicons")
+		use("nvim-lualine/lualine.nvim")
+		use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "tiagovla/scope.nvim" })
 
-    -- Coloscheme
-    use 'folke/tokyonight.nvim' -- Terminal Colors
-    use "kyazdani42/nvim-web-devicons"
-    use "nvim-lualine/lualine.nvim"
-    use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'tiagovla/scope.nvim' }
+		-- Which Key
+		use("folke/which-key.nvim") -- That displays a popup with possible key bindings of the command you started typing.
 
-    -- Which Key
-    use "folke/which-key.nvim" -- That displays a popup with possible key bindings of the command you started typing.
+		-- File Explorer
+		use({
+			"nvim-neo-tree/neo-tree.nvim",
+			branch = "v2.x",
+			requires = {
+				"MunifTanjim/nui.nvim",
+			},
+		})
+		use("kyazdani42/nvim-tree.lua")
+		use("ahmedkhalf/project.nvim")
 
-    -- File Explorer
-    use {
-      "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        requires = { 
-          "MunifTanjim/nui.nvim",
-        }
-    }
-    use 'kyazdani42/nvim-tree.lua'
-    use "ahmedkhalf/project.nvim"
+		-- Treesitter
+		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+		use("JoosepAlviste/nvim-ts-context-commentstring")
+		use({
+			"numToStr/Comment.nvim",
+			config = function()
+				require("Comment").setup()
+			end,
+		})
 
-    -- Treesitter
-    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
-    use "JoosepAlviste/nvim-ts-context-commentstring"
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+		-- CMP
+		use("hrsh7th/nvim-cmp") -- The completion plugin
+		use("hrsh7th/cmp-buffer") -- buffer completions
+		use("hrsh7th/cmp-path") -- path completions
+		use("hrsh7th/cmp-cmdline") -- cmdline completions
+		use("saadparwaiz1/cmp_luasnip") -- snippet completions
+		use("onsails/lspkind.nvim")
+		use("hrsh7th/cmp-nvim-lsp")
+		-- use "rcarriga/cmp-dap" -- source for nvim-dap REPL and nvim-dap-ui buffers
 
-    -- CMP
-  -- cmp plugins
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use "onsails/lspkind.nvim"
-  -- use "hrsh7th/cmp-nvim-lsp"
-  -- use "rcarriga/cmp-dap" -- source for nvim-dap REPL and nvim-dap-ui buffers
+		-- snippets
+		use("L3MON4D3/LuaSnip") --snippet engine
+		use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
+		-- LSP
+		use({
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+		})
+		use({
+			"glepnir/lspsaga.nvim",
+			opt = true,
+			branch = "main",
+			event = "LspAttach",
+		})
 
-  -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-    -- Git
-    use 'lewis6991/gitsigns.nvim'
+		use("jose-elias-alvarez/null-ls.nvim")
+		use("jay-babu/mason-null-ls.nvim")
+		-- Trouble
+		use("folke/trouble.nvim")
 
-    -- indent
-    use "lukas-reineke/indent-blankline.nvim"
+		-- Git
+		use("lewis6991/gitsigns.nvim")
 
-    -- Telescope
-    use { "nvim-telescope/telescope.nvim", tag = '0.1.x', requires = 'nvim-lua/plenary.nvim' }
+		-- indent
+		use("lukas-reineke/indent-blankline.nvim")
 
-    use { "akinsho/toggleterm.nvim", tag = '*' }
+		-- Telescope
+		use({ "nvim-telescope/telescope.nvim", tag = "0.1.x", requires = "nvim-lua/plenary.nvim" })
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if PACKER_BOOTSTRAP then
-        require("packer").sync()
-    end
-end,  config = {
-  display = {
-    open_fn = function()
-      return require('packer.util').float({ border = 'rounded' })
-    end
-  }
-}})
+		-- Terminal
+		use({ "akinsho/toggleterm.nvim", tag = "*" })
+
+		-- Automatically set up your configuration after cloning packer.nvim
+		-- Put this at the end after all plugins
+		if PACKER_BOOTSTRAP then
+			require("packer").sync()
+		end
+	end,
+	config = {
+		display = {
+			open_fn = function()
+				return require("packer.util").float({ border = "rounded" })
+			end,
+		},
+	},
+})
