@@ -105,6 +105,7 @@ return packer.startup({
 
 		use("jose-elias-alvarez/null-ls.nvim")
 		use("jay-babu/mason-null-ls.nvim")
+
 		-- Trouble
 		use("folke/trouble.nvim")
 
