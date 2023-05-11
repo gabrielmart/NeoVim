@@ -31,8 +31,8 @@ cmp.setup({
 		["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 		["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 		["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm(),
+		["<C-e>"] = cmp.mapping(cmp.mapping.abort()),
+		["<CR>"] = cmp.mapping(cmp.mapping.confirm()),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item({ behavior = types.cmp.SelectBehavior.Select })
@@ -97,11 +97,8 @@ cmp.setup({
 	},
 })
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+require("cmp_nvim_lsp").default_capabilities()
 
 -- If you want insert `(` after select function or method item
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

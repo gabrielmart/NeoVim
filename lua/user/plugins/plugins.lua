@@ -41,8 +41,18 @@ return packer.startup({
 		use("moll/vim-bbye") -- Allows you to do delete buffers (close files) without closing your windows or messing up your layout.
 		use({
 			"windwp/nvim-autopairs",
+			config = require("nvim-autopairs").setup({}),
+		})
+		use({
+			"windwp/nvim-ts-autotag",
 			config = function()
-				require("nvim-autopairs").setup({})
+				require("nvim-ts-autotag").setup()
+			end,
+		})
+		use({
+			"norcalli/nvim-colorizer.lua",
+			config = function()
+				require("colorizer").setup()
 			end,
 		})
 
@@ -95,6 +105,7 @@ return packer.startup({
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
+			"folke/neodev.nvim",
 		})
 		use({
 			"glepnir/lspsaga.nvim",
@@ -103,6 +114,7 @@ return packer.startup({
 			event = "LspAttach",
 		})
 
+		-- Formatter / Linter
 		use("jose-elias-alvarez/null-ls.nvim")
 		use("jay-babu/mason-null-ls.nvim")
 
