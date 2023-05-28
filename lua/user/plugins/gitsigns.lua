@@ -1,1 +1,5 @@
-require('gitsigns').setup()
+local M = {}
+
+require("gitsigns").setup()
+
+return M

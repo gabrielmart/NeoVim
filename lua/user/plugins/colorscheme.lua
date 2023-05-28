@@ -1,8 +1,18 @@
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_keywords = false
-vim.g.tokyonight_italic_comments = false
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_colors = {
-    border = "#545C7E",
-}
-vim.cmd[[colorscheme tokyonight-night]]
+local M = {}
+
+require("catppuccin").setup({
+   highlight_overrides = {
+      mocha = function(C)
+         return {
+            TabLineSel = { bg = C.pink },
+            CmpBorder = { fg = C.surface2 },
+            Pmenu = { bg = C.none },
+            TelescopeBorder = { link = "FloatBorder" },
+         }
+      end,
+   },
+})
+
+vim.cmd.colorscheme("catppuccin")
+
+return M
